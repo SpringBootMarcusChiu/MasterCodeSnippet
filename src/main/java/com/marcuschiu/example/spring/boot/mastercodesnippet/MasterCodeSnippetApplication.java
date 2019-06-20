@@ -27,11 +27,7 @@ public class MasterCodeSnippetApplication implements CommandLineRunner {
 		SpringApplication.run(MasterCodeSnippetApplication.class, args);
 	}
 
-	@Autowired
-	MyAsyncService myAsyncService;
-
 	@Override
 	public void run(String... strings) throws Exception {
-		myAsyncService.test();
 	}
 }
