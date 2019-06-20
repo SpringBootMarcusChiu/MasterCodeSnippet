@@ -1,5 +1,9 @@
 package com.marcuschiu.example.spring.boot.mastercodesnippet;
 
+import com.marcuschiu.example.spring.boot.mastercodesnippet.configuration.MyAsyncService;
+import com.marcuschiu.example.spring.boot.mastercodesnippet.service.ListBeansService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -17,10 +21,17 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  *          and services in the package this class belongs to, allowing it to find the controllers
  */
 @SpringBootApplication
-public class MasterCodeSnippetApplication {
+public class MasterCodeSnippetApplication implements CommandLineRunner {
 
 	public static void main(String[] args) {
 		SpringApplication.run(MasterCodeSnippetApplication.class, args);
 	}
 
+	@Autowired
+	MyAsyncService myAsyncService;
+
+	@Override
+	public void run(String... strings) throws Exception {
+		myAsyncService.test();
+	}
 }
