@@ -1,11 +1,10 @@
 package com.marcuschiu.example.spring.boot.mastercodesnippet;
 
-import com.marcuschiu.example.spring.boot.mastercodesnippet.configuration.MyAsyncService;
-import com.marcuschiu.example.spring.boot.mastercodesnippet.service.ListBeansService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ApplicationContext;
 
 /**
  * Created by marcus.chiu on 10/1/16.
@@ -23,11 +22,15 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class MasterCodeSnippetApplication implements CommandLineRunner {
 
+	@Autowired
+	ApplicationContext applicationContext;
+
 	public static void main(String[] args) {
 		SpringApplication.run(MasterCodeSnippetApplication.class, args);
 	}
 
 	@Override
 	public void run(String... strings) throws Exception {
+		System.out.println(applicationContext.getDisplayName());
 	}
 }
