@@ -5,6 +5,11 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
+import org.springframework.core.env.AbstractEnvironment;
+import org.springframework.core.env.Environment;
+
+import java.util.Optional;
+import java.util.function.Function;
 
 /**
  * Created by marcus.chiu on 10/1/16.
@@ -25,12 +30,16 @@ public class MasterCodeSnippetApplication implements CommandLineRunner {
 	@Autowired
 	ApplicationContext applicationContext;
 
+	@Autowired
+	Environment environment;
+
 	public static void main(String[] args) {
 		SpringApplication.run(MasterCodeSnippetApplication.class, args);
 	}
 
 	@Override
-	public void run(String... strings) throws Exception {
-		System.out.println(applicationContext.getDisplayName());
+	public void run(String... strings) {
+//		System.out.println(applicationContext.getDisplayName());
+		((AbstractEnvironment)environment).getPropertySources();
 	}
 }
