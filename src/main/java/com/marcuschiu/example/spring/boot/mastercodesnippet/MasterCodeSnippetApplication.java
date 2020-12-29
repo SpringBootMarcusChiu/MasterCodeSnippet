@@ -1,6 +1,7 @@
 package com.marcuschiu.example.spring.boot.mastercodesnippet;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -37,9 +38,13 @@ public class MasterCodeSnippetApplication implements CommandLineRunner {
 		SpringApplication.run(MasterCodeSnippetApplication.class, args);
 	}
 
+	@Value("${marcusdsdhs:}")
+	String tt;
+
 	@Override
 	public void run(String... strings) {
 //		System.out.println(applicationContext.getDisplayName());
-		((AbstractEnvironment)environment).getPropertySources();
+//		((AbstractEnvironment)environment).getPropertySources();
+		System.out.println();
 	}
 }

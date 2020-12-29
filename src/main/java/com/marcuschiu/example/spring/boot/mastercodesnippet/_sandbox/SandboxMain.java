@@ -2,20 +2,35 @@ package com.marcuschiu.example.spring.boot.mastercodesnippet._sandbox;
 
 import org.springframework.beans.BeanUtils;
 
+import java.util.Comparator;
+import java.util.HashMap;
 import java.util.Objects;
+import java.util.function.Supplier;
 
 public class SandboxMain {
     public SandboxMain() {
     }
 
     public static void main(String[] args) {
-//        Pojo1 pojo1 = new Pojo1(1, "hello");
-//        Pojo2 pojo2 = new Pojo2();
-//        BeanUtils.copyProperties(pojo1, pojo2);
-//        System.out.println(pojo2.getI());
-//        System.out.println(pojo2.getStrr());
 
-        System.out.println(Objects.equals(null, null));
+        String obj = factory(String::new);
+        System.out.println(obj);
+
+        String obj2 = factory("fffdff"::toString);
+        System.out.println(obj2);
+
+        Supplier<String> f = String::new;
+        System.out.println(f.get());
+    }
+
+    public static String factory(Supplier<?> s) {
+
+        String developer = (String) s.get();
+        if (developer == null || "".equals(developer)) {
+            developer = "default";
+        }
+
+        return developer;
 
     }
 
